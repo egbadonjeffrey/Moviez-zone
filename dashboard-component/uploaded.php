@@ -1,8 +1,8 @@
 <div>
-    <form action="/utils/process_upload.php" method="post" enctype="multipart/form-data"
+    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
         class="flex flex-row items-center">
-        <input type="file" name="my_video" id="">
-        <button type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
+        <input type="file" name="file" id="file">
+        <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
     </form>
 </div>
 
