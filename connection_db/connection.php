@@ -1,13 +1,11 @@
 <?php
 
+
 function connectToDB()
 {
+    require_once('./dbconfig.php');
 
 
-    $host = "localhost";
-    $database_name = "movies_db";
-    $database_username = "scarred-codes";
-    $database_password = "scarred*codes";
 
     $mysqli = mysqli_connect($host, $database_username, $database_password, $database_name);
 
