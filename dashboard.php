@@ -34,11 +34,16 @@ if (isset($_SESSION["user_id"])) {
     } else {
         echo "Failed";
     }
-
-
-
-
 }
+
+
+$sql = "SELECT * FROM videos_data ORDER BY id DESC";
+$result = mysqli_query($mysqli, $sql);
+
+
+
+
+
 
 
 ?>
@@ -96,6 +101,8 @@ if (isset($_SESSION["user_id"])) {
             <div id="content">
 
 
+
+
                 <!-- OUTPUT CONTENT -->
 
                 <?php
@@ -103,20 +110,120 @@ if (isset($_SESSION["user_id"])) {
 
                 // You can define content for each page
                 if ($page === 'page1') {
-                    include('./dashboard-component/movies.php');
+                    echo '<div class="movies-container min-h-[50vh] mx-auto p-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
+                        <!-- Image Cards Go Here -->
+                        <div class="bg-white h-[400px] rounded shadow-md">
+                            <img src="./img/project-1.jpg" alt="Image 1" class="w-full h-[250px] object-cover">
+                            <div class="p-2">
+                                <h3 class="text-lg font-semibold">Image 1</h3>
+                                <p class="text-gray-600">Description for Image 1.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-2.webp" alt="Image 2" class="w-full h-[250px]  object-cover">
+                            <div class="p-2">
+                                <h3 class="text-lg font-semibold">Image 2</h3>
+                                <p class="text-gray-600">Description for Image 2.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-3.jpg" alt="Image 3" class="w-full  h-[250px]  object-cover">
+                            <div class="p-2">
+                                <h3 class="text-lg font-semibold">Image 3</h3>
+                                <p class="text-gray-600">Description for Image 3.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-4.jpg" alt="Image 4" class="w-full  h-[250px] object-cover">
+                            <div class="p-2">
+                                <h3 class="text-lg font-semibold">Image 4</h3>
+                                <p class="text-gray-600">Description for Image 4.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
                 } elseif ($page === 'page2') {
-                    include('./dashboard-component/friends.php');
+                    echo '<div>
+                        Friends would be shown here if you have any ;)
+                        </div>';
                 } elseif ($page === 'page3') {
-                    include('./dashboard-component/downloaded.php');
+                    echo '<div class="movies-container  mx-auto p-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Image Cards Go Here -->
+                        <div class="bg-white h-[450px] rounded shadow-md">
+                            <img src="./img/project-5.jpeg" alt="Image 1" class="w-full h-[300px] object-cover">
+                            <div class="p-2">
+                                <h3 class="text-lg font-semibold">Image 1</h3>
+                                <p class="text-gray-600">Description for Image 1.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-6.jpg" alt="Image 2" class="w-full h-[300px]  object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold">Image 2</h3>
+                                <p class="text-gray-600">Description for Image 2.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-7.jpeg" alt="Image 3" class="w-full  h-[300px]  object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold">Image 3</h3>
+                                <p class="text-gray-600">Description for Image 3.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-md">
+                            <img src="./img/project-8.webp" alt="Image 4" class="w-full  h-[300px] object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold">Image 4</h3>
+                                <p class="text-gray-600">Description for Image 4.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
                 } elseif ($page === 'page4') {
-                    include('./dashboard-component/uploaded.php');
-                } else {
-                    $page = 'Page not found.';
+                    echo '<div>
+                    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
+                        class="flex flex-row items-center">
+                        <input type="file" name="file" id="file">
+                        <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
+                    </form>
+                
+                
+    
+                </div>
+                ';
+
+                    ?>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
+                        <!-- <div class="flex flex-row"> -->
+
+                        <?php
+                        // Check if there are any video records
+                    
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $video_url = $row['video_url'];
+
+                                // Output each video in a grid column
+                                echo '
+                                <video width="1000" height="500" controls>
+                                    <source src="videos/' . $video_url . '" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>';
+
+                            }
+                            // Close the row
+                        } else {
+                            echo 'No video to output';
+                        }
+
+
+                    // echo $page;
                 }
-
-                // echo $page;
                 ?>
-
+                </div>
             </div>
 
 
@@ -132,4 +239,6 @@ if (isset($_SESSION["user_id"])) {
 
 require("./include/footer.php");
 
+
+mysqli_close($mysqli);
 ?>

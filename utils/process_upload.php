@@ -30,10 +30,11 @@ if (isset($_POST['submit']) && isset($_FILES['file'])) {
         if (in_array($video_extension_lowercase, $allowed_exs)) {
             // Upload video
             $new_video_name = uniqid("video-", true) . '.' . $video_extension_lowercase;
-            $video_upload_path = '/opt/lampp/htdocs/moviez-zone/videos/' . $new_video_name;
+            $video_upload_path = '../videos/' . $new_video_name;
 
             if ($tmp_name) {
                 echo 'Temp file exists';
+                echo $video_upload_path;
 
                 move_uploaded_file($tmp_name, $video_upload_path);
             } else {
@@ -74,7 +75,7 @@ if (isset($_POST['submit']) && isset($_FILES['file'])) {
 
                 echo $username . "uploaded one video successfully";
 
-                header("Location: /moviez-zone/index.php");
+                // header("Location: /moviez-zone/index.php");
 
             } else {
                 echo "Upload Failed";
