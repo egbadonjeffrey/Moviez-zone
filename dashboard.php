@@ -6,44 +6,7 @@ error_reporting(E_ALL);
 
 require("./connection_db/connection.php");
 require("./include/header.php");
-
-
-// Start session
-session_start();
-
-
-// If user is not logged in, redirect to login page
-if (!isset($_SESSION["user_id"])) {
-    header("Location: signin.php");
-}
-
-
-// Get the user from database
-if (isset($_SESSION["user_id"])) {
-    $sql = "SELECT * FROM users_data WHERE id={$_SESSION["user_id"]}";
-
-    $result = $mysqli->query($sql);
-
-    if ($result) {
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            $username = $user["username"];
-
-            echo "Your username is: " . $username;
-        }
-    } else {
-        echo "Failed";
-    }
-}
-
-
-$sql = "SELECT * FROM videos_data ORDER BY id DESC";
-$result = mysqli_query($mysqli, $sql);
-
-
-
-
-
+include("./dashboard-component/uploaded.php");
 
 
 ?>
@@ -102,104 +65,51 @@ $result = mysqli_query($mysqli, $sql);
 
 
 
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
+                    <!-- OUTPUT CONTENT -->
 
-                <!-- OUTPUT CONTENT -->
+                    <?php
+                    $page = $_GET['page'];
 
-                <?php
-                $page = $_GET['page'];
 
-                // You can define content for each page
-                if ($page === 'page1') {
-                    echo '<div class="movies-container min-h-[50vh] mx-auto p-2">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
-                        <!-- Image Cards Go Here -->
-                        <div class="bg-white h-[400px] rounded shadow-md">
-                            <img src="./img/project-1.jpg" alt="Image 1" class="w-full h-[250px] object-cover">
-                            <div class="p-2">
-                                <h3 class="text-lg font-semibold">Image 1</h3>
-                                <p class="text-gray-600">Description for Image 1.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-2.webp" alt="Image 2" class="w-full h-[250px]  object-cover">
-                            <div class="p-2">
-                                <h3 class="text-lg font-semibold">Image 2</h3>
-                                <p class="text-gray-600">Description for Image 2.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-3.jpg" alt="Image 3" class="w-full  h-[250px]  object-cover">
-                            <div class="p-2">
-                                <h3 class="text-lg font-semibold">Image 3</h3>
-                                <p class="text-gray-600">Description for Image 3.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-4.jpg" alt="Image 4" class="w-full  h-[250px] object-cover">
-                            <div class="p-2">
-                                <h3 class="text-lg font-semibold">Image 4</h3>
-                                <p class="text-gray-600">Description for Image 4.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
-                } elseif ($page === 'page2') {
-                    echo '<div>
+                    // You can define content for each page
+                    if ($page === 'page1') {
+
+
+
+
+                        // Check if there are any video records
+                    
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $video_url = $row['video_url'];
+
+                                // Output each video in a grid column
+                                echo '
+                            <video width="1000" height="500" controls>
+                                <source src="videos/' . $video_url . '" type="video/mp4">
+                                <source src="videos/' . $video_url . '" type="video/webm">
+                                <source src="videos/' . $video_url . '" type="video/avi">
+                                <source src="videos/' . $video_url . '" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>';
+
+                            }
+                            // Close the row
+                        } else {
+                            echo 'No video to output';
+                        }
+
+
+                        // echo $page;
+                    
+
+                    } elseif ($page === 'page2') {
+                        echo '<div class="w-full">
                         Friends would be shown here if you have any ;)
                         </div>';
-                } elseif ($page === 'page3') {
-                    echo '<div class="movies-container  mx-auto p-2">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <!-- Image Cards Go Here -->
-                        <div class="bg-white h-[450px] rounded shadow-md">
-                            <img src="./img/project-5.jpeg" alt="Image 1" class="w-full h-[300px] object-cover">
-                            <div class="p-2">
-                                <h3 class="text-lg font-semibold">Image 1</h3>
-                                <p class="text-gray-600">Description for Image 1.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-6.jpg" alt="Image 2" class="w-full h-[300px]  object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold">Image 2</h3>
-                                <p class="text-gray-600">Description for Image 2.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-7.jpeg" alt="Image 3" class="w-full  h-[300px]  object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold">Image 3</h3>
-                                <p class="text-gray-600">Description for Image 3.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded shadow-md">
-                            <img src="./img/project-8.webp" alt="Image 4" class="w-full  h-[300px] object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold">Image 4</h3>
-                                <p class="text-gray-600">Description for Image 4.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
-                } elseif ($page === 'page4') {
-                    echo '<div>
-                    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
-                        class="flex flex-row items-center">
-                        <input type="file" name="file" id="file">
-                        <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
-                    </form>
-                
-                
-    
-                </div>
-                ';
+                    } elseif ($page === 'page3') {
 
-                    ?>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
-                        <!-- <div class="flex flex-row"> -->
-
-                        <?php
                         // Check if there are any video records
                     
                         if (mysqli_num_rows($result) > 0) {
@@ -210,6 +120,9 @@ $result = mysqli_query($mysqli, $sql);
                                 echo '
                                 <video width="1000" height="500" controls>
                                     <source src="videos/' . $video_url . '" type="video/mp4">
+                                    <source src="videos/' . $video_url . '" type="video/webm">
+                                    <source src="videos/' . $video_url . '" type="video/avi">
+                                    <source src="videos/' . $video_url . '" type="video/ogg">
                                     Your browser does not support the video tag.
                                 </video>';
 
@@ -220,9 +133,48 @@ $result = mysqli_query($mysqli, $sql);
                         }
 
 
-                    // echo $page;
-                }
-                ?>
+                    } elseif ($page === 'page4') {
+                        echo '<div>
+                    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
+                        class="flex flex-row items-center">
+                        <input type="file" name="file" id="file">
+                        <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
+                    </form>
+
+                    
+                
+                
+    
+                </div>
+                ';
+
+
+
+                        // Check if there are any video records
+                    
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($user_uploaded_results)) {
+                                $video_url = $row['video_url'];
+
+                                // Output each video in a grid column
+                                echo '
+                        <video width="1000" height="500" controls>
+                            <source src="videos/' . $video_url . '" type="video/mp4">
+                            <source src="videos/' . $video_url . '" type="video/webm">
+                            <source src="videos/' . $video_url . '" type="video/avi">
+                            <source src="videos/' . $video_url . '" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>';
+
+                            }
+                            // Close the row
+                        } else {
+                            echo 'No video to output';
+                        }
+
+                    }
+                    ?>
+
                 </div>
             </div>
 

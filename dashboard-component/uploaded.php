@@ -1,7 +1,47 @@
-<!-- Output the HTML video element for each video URL -->
-<video width="320" height="240" controls>
-    <source src="<?php echo "videos/" . $video_url; ?>" type="video/mp4">
-    <source src="<?php echo "videos/" . $video_url; ?>" type="video/webm">
-    <source src="<?php echo "videos/" . $video_url; ?>" type="video/ogg">
-    Your browser does not support the video tag.
-</video>
+<?php
+
+include("connection_db/dbconfig.php");
+
+
+// Start session
+session_start();
+
+
+// If user is not logged in, redirect to login page
+if (!isset($_SESSION["user_id"])) {
+    header("Location: signin.php");
+}
+
+
+// Get the user from database
+if (isset($_SESSION["user_id"])) {
+    $sql = "SELECT * FROM users_data WHERE id={$_SESSION["user_id"]}";
+
+    $result = $mysqli->query($sql);
+
+    if ($result) {
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $username = $user["username"];
+
+            echo "Your username is: " . $username;
+        }
+    } else {
+        echo "Failed";
+    }
+}
+
+
+
+// Get Videos from DB
+
+
+$sql = "SELECT * FROM videos_data WHERE username = '$username'";
+$user_uploaded_results = mysqli_query($mysqli, $sql);
+
+
+$sql = "SELECT * FROM videos_data ORDER BY id DESC";
+$result = mysqli_query($mysqli, $sql);
+
+
+?>
