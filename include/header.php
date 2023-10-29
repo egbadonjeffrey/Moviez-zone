@@ -9,7 +9,9 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="icon" type="image/x-icon"
+        href="https://static.vecteezy.com/system/resources/thumbnails/002/236/321/small/movie-trendy-banner-vector.jpg">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +32,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Video css -->
+    <link href="css/custom_video.css" rel="stylesheet">
 
     <?php
     $currentRoute = $_SERVER['REQUEST_URI'];

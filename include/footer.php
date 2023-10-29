@@ -6,9 +6,8 @@
             <a href="index.html" class="navbar-brand">
                 <h1 class="display-5 text-primary">Moviezone</h1>
             </a>
-            <p>Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam sed clita
-                dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
-            <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
+            <p>Share the magic of movies with friends, from anywhere, and with everyone..</p>
+            <p><i class="fa fa-map-marker-alt me-2"></i>Nigeria</p>
             <p><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
             <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
             <div class="d-flex justify-content-start mt-4">

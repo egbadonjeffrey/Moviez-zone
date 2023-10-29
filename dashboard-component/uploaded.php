@@ -1,52 +1,41 @@
-<div>
-    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
-        class="flex flex-row items-center">
+<div class="w-[50%]">
+    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data" class="flex flex-col gap-3">
+        <input type="text" name="video_name" id="video_name" placeholder="Enter the name of the video"
+            class="border-black border-b-[1.5px] outline-none">
         <input type="file" name="file" id="file">
         <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
     </form>
+
 </div>
 
+<!-- // Check if there are any video records -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
 
-<?php
+    <?php
+    if (mysqli_num_rows($user_uploaded_results) > 0) {
+        while ($row = mysqli_fetch_assoc($user_uploaded_results)) {
+            $video_url = $row['video_url'];
+            $video_title = $row['video_name'];
 
-$downloadedMovies = ["Extraction 2"];
+            echo '
+            <div class="flex flex-col gap-3 border-2 bg-gray-300">
+                <video style="width: 1500px; min-height: 150px;" controls>
+                    <source src="videos/' . $video_url . '" type="video/mp4">
+                    <source src="videos/' . $video_url . '" type="video/webm">
+                    <source src="videos/' . $video_url . '" type="video/avi">
+                    <source src="videos/' . $video_url . '" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="font-bold text-black text-center"> ' . $video_title . '   
+             </div>
+                ';
 
-if (count($downloadedMovies) > 0) {
-    echo '<div class="movies-container  mx-auto p-2">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Image Cards Go Here -->
-        <div class="bg-white h-[450px] rounded shadow-md">
-            <img src="./img/project-5.jpeg" alt="Image 1" class="w-full h-[300px] object-cover">
-            <div class="p-2">
-                <h3 class="text-lg font-semibold">Image 1</h3>
-                <p class="text-gray-600">Description for Image 1.</p>
-            </div>
-        </div>
-        <div class="bg-white rounded shadow-md">
-            <img src="./img/project-6.jpg" alt="Image 2" class="w-full h-[300px]  object-cover">
-            <div class="p-4">
-                <h3 class="text-lg font-semibold">Image 2</h3>
-                <p class="text-gray-600">Description for Image 2.</p>
-            </div>
-        </div>
-        <div class="bg-white rounded shadow-md">
-            <img src="./img/project-7.jpeg" alt="Image 3" class="w-full  h-[300px]  object-cover">
-            <div class="p-4">
-                <h3 class="text-lg font-semibold">Image 3</h3>
-                <p class="text-gray-600">Description for Image 3.</p>
-            </div>
-        </div>
-        <div class="bg-white rounded shadow-md">
-            <img src="./img/project-8.webp" alt="Image 4" class="w-full  h-[300px] object-cover">
-            <div class="p-4">
-                <h3 class="text-lg font-semibold">Image 4</h3>
-                <p class="text-gray-600">Description for Image 4.</p>
-            </div>
-        </div>
-    </div>
-</div>';
-} else {
-    echo 'It is empty';
-}
 
-?>
+        }
+        // Close the row
+    } else {
+        echo 'No video to output';
+    }
+
+    ?>
+</div>

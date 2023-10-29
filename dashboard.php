@@ -6,39 +6,7 @@ error_reporting(E_ALL);
 
 require("./connection_db/connection.php");
 require("./include/header.php");
-
-
-// Start session
-session_start();
-
-
-// If user is not logged in, redirect to login page
-if (!isset($_SESSION["user_id"])) {
-    header("Location: signin.php");
-}
-
-
-// Get the user from database
-if (isset($_SESSION["user_id"])) {
-    $sql = "SELECT * FROM users_data WHERE id={$_SESSION["user_id"]}";
-
-    $result = $mysqli->query($sql);
-
-    if ($result) {
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            $username = $user["username"];
-
-            echo "Your username is: " . $username;
-        }
-    } else {
-        echo "Failed";
-    }
-
-
-
-
-}
+include("./utils/process_get_data.php");
 
 
 ?>
@@ -50,14 +18,12 @@ if (isset($_SESSION["user_id"])) {
 <div class="" style="">
 
 
-    <div class="flex gap-5  flex-col lg:flex-row justify-between p-4">
+    <div class="flex gap-5  flex-col lg:flex-row justify-between min-h-[70vh] p-4">
         <div class="flex flex-col gap-5">
             <h1 class="text-3xl">User Dashboard Page</h1>
-            <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
+            <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
                 <li> <a href="dashboard.php?page=page1">Movies</a> </li>
-                <li> <a href="dashboard.php?page=page2">Friends</a> </li>
-                <li> <a href="dashboard.php?page=page3">Downloaded</a> </li>
-                <li> <a href="dashboard.php?page=page4">Uploaded</a> </li>
+                <li> <a href="dashboard.php?page=page2">Uploaded</a> </li>
             </ul>
         </div>
         <div class="flex flex-col gap-5 flex-1">
@@ -96,27 +62,33 @@ if (isset($_SESSION["user_id"])) {
             <div id="content">
 
 
+
+
                 <!-- OUTPUT CONTENT -->
 
                 <?php
                 $page = $_GET['page'];
 
+
                 // You can define content for each page
                 if ($page === 'page1') {
-                    include('./dashboard-component/movies.php');
+                    ?>
+
+
+
+
+                    <?php require('dashboard-component/movies.php'); ?>
+
+
+
+                    <?php
                 } elseif ($page === 'page2') {
-                    include('./dashboard-component/friends.php');
-                } elseif ($page === 'page3') {
-                    include('./dashboard-component/downloaded.php');
-                } elseif ($page === 'page4') {
-                    include('./dashboard-component/uploaded.php');
-                } else {
-                    $page = 'Page not found.';
-                }
+                    ?>
 
-                // echo $page;
-                ?>
+                    <?php require("dashboard-component/uploaded.php"); ?>
+                <?php } ?>
 
+                <!-- </div> -->
             </div>
 
 
@@ -132,4 +104,6 @@ if (isset($_SESSION["user_id"])) {
 
 require("./include/footer.php");
 
+
+mysqli_close($mysqli);
 ?>

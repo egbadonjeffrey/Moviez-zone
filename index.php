@@ -10,9 +10,9 @@ require("./include/header.php");
             <div class="col-lg-6">
                 <p class="text-primary text-uppercase mb-2 animated slideInDown">Welcome To Moviezone</p>
                 <h1 class="display-4 mb-3 animated slideInDown">Movies shared by friends</h1>
-                <p class="animated slideInDown">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
-                    diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo
-                    magna dolore erat amet</p>
+                <p class="animated slideInDown">Share the magic of movies with friends, from anywhere, and with
+                    everyone.
+                </p>
                 <div class="d-flex align-items-center pt-4 animated slideInDown">
                     <a href="" class="btn btn-primary py-3 px-4 me-5">Explore More</a>
                     <button type="button" class="btn-play" data-bs-toggle="modal"
@@ -78,29 +78,26 @@ require("./include/header.php");
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-100">
-                    <p class="text-primary text-uppercase mb-2">About Us</p>
-                    <h1 class="display-6 mb-4">We Are Creative And Professional Photographer</h1>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                    <p class="text-primary text-uppercase font-bold mb-2">About Us</p>
+                    <h1 class="display-6 mb-4">Moviez zone - Where cinematic passion meets seamless sharing. </h1>
+                    <p>Welcome to our movie upload and download platform, where cinematic passion meets seamless
+                        sharing. At our core, we are dedicated to bringing the world of movies closer to you. Whether
+                        you're a filmmaker looking to showcase your work or a movie enthusiast eager to discover new
+                        cinematic treasures, our platform is your gateway to a world of entertainment.
+
+                    <p>
+                        We're committed to making your movie-sharing experience as user-friendly as possible. Our
+                        intuitive interface and robust features ensure that uploading and downloading your favorite
+                        films is a breeze. Join our community of movie lovers, where you can explore, connect, and
+                        celebrate the art of storytelling through the silver screen.
                     </p>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+
+                    <p> With a vast library of diverse films and a vibrant community of users, we invite you to embark
+                        on a cinematic journey that transcends boundaries. Explore, share, and experience the magic of
+                        movies with us. Welcome to the world of limitless cinematic possibilities.
                     </p>
-                    <div class="row g-2 mb-4">
-                        <div class="col-sm-6">
-                            <i class="fa fa-check text-primary me-3"></i>Quality Products
-                        </div>
-                        <div class="col-sm-6">
-                            <i class="fa fa-check text-primary me-3"></i>Custom Products
-                        </div>
-                        <div class="col-sm-6">
-                            <i class="fa fa-check text-primary me-3"></i>Online Order
-                        </div>
-                        <div class="col-sm-6">
-                            <i class="fa fa-check text-primary me-3"></i>Home Delivery
-                        </div>
-                    </div>
-                    <a class="btn btn-primary py-3 px-5" href="">Read More</a>
+
+
                 </div>
             </div>
         </div>
@@ -110,7 +107,7 @@ require("./include/header.php");
 
 
 <!-- Facts Start -->
-<div class="container-xxl py-5">
+<!-- <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">Why Choose Us!</p>
@@ -143,7 +140,7 @@ require("./include/header.php");
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Facts End -->
 
 
@@ -158,56 +155,56 @@ require("./include/header.php");
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item d-flex flex-column bg-white p-3 pb-0">
                     <div class="position-relative">
-                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        <img class="img-fluid" style="height: 350px;" src="img/project-2.webp" alt="">
                         <div class="service-overlay">
                             <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i
                                     class="fa fa-link text-primary"></i></a>
                         </div>
                     </div>
                     <div class="text-center p-4">
-                        <h4>Weddings</h4>
+                        <h4>Action</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 pt-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item d-flex flex-column bg-white p-3 pb-0">
                     <div class="position-relative">
-                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        <img class="img-fluid" src="img/project-6.jpg" alt="">
                         <div class="service-overlay">
                             <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i
                                     class="fa fa-link text-primary"></i></a>
                         </div>
                     </div>
                     <div class="text-center p-4">
-                        <h4>Portraits</h4>
+                        <h4>Science Fiction</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item d-flex flex-column bg-white p-3 pb-0">
                     <div class="position-relative">
-                        <img class="img-fluid" src="img/service-3.jpg" alt="">
+                        <img class="img-fluid" style="height: 350px;" src="img/project-7.jpeg" alt="">
                         <div class="service-overlay">
                             <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i
                                     class="fa fa-link text-primary"></i></a>
                         </div>
                     </div>
                     <div class="text-center p-4">
-                        <h4>Fashion</h4>
+                        <h4>Comedy</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 pt-lg-5 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item d-flex flex-column bg-white p-3 pb-0">
                     <div class="position-relative">
-                        <img class="img-fluid" src="img/service-4.jpg" alt="">
+                        <img class="img-fluid" style="height: 350px;" src="img/project-4.jpg" alt="">
                         <div class="service-overlay">
                             <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i
                                     class="fa fa-link text-primary"></i></a>
                         </div>
                     </div>
                     <div class="text-center p-4">
-                        <h4>Editorial</h4>
+                        <h4>Romance</h4>
                     </div>
                 </div>
             </div>
@@ -297,8 +294,8 @@ require("./include/header.php");
                     </div>
                     <div class="col-12">
                         <div class="project-item">
-                            <img class="img-fluid w-100" style="height: 250px;" src="img/project-5.jpg" alt="">
-                            <a class="project-title h5 mb-0" href="img/project-5.jpg" data-lightbox="project">
+                            <img class="img-fluid w-100" style="height: 250px;" src="img/project-8.jpg" alt="">
+                            <a class="project-title h5 mb-0" href="img/project-8.jpg" data-lightbox="project">
                                 Animation
                             </a>
                         </div>
@@ -436,7 +433,7 @@ require("./include/header.php");
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">Client's Review</p>
-            <h1 class="display-6 mb-0">More Than 20000+ Users Share On Our Platform</h1>
+            <h1 class="display-6 mb-0">What Users That Share On Our Platform Have To Say</h1>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
             <div class="testimonial-item bg-white p-4">
