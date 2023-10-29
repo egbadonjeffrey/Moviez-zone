@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 require("./connection_db/connection.php");
 require("./include/header.php");
-include("./dashboard-component/uploaded.php");
+include("./utils/process_get_data.php");
 
 
 ?>
@@ -18,14 +18,12 @@ include("./dashboard-component/uploaded.php");
 <div class="" style="">
 
 
-    <div class="flex gap-5  flex-col lg:flex-row justify-between p-4">
+    <div class="flex gap-5  flex-col lg:flex-row justify-between min-h-[70vh] p-4">
         <div class="flex flex-col gap-5">
             <h1 class="text-3xl">User Dashboard Page</h1>
-            <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
+            <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
                 <li> <a href="dashboard.php?page=page1">Movies</a> </li>
-                <li> <a href="dashboard.php?page=page2">Friends</a> </li>
-                <li> <a href="dashboard.php?page=page3">Downloaded</a> </li>
-                <li> <a href="dashboard.php?page=page4">Uploaded</a> </li>
+                <li> <a href="dashboard.php?page=page2">Uploaded</a> </li>
             </ul>
         </div>
         <div class="flex flex-col gap-5 flex-1">
@@ -65,117 +63,32 @@ include("./dashboard-component/uploaded.php");
 
 
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
-                    <!-- OUTPUT CONTENT -->
 
-                    <?php
-                    $page = $_GET['page'];
+                <!-- OUTPUT CONTENT -->
 
-
-                    // You can define content for each page
-                    if ($page === 'page1') {
+                <?php
+                $page = $_GET['page'];
 
 
-
-
-                        // Check if there are any video records
-                    
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $video_url = $row['video_url'];
-
-                                // Output each video in a grid column
-                                echo '
-                            <video width="1000" height="500" controls>
-                                <source src="videos/' . $video_url . '" type="video/mp4">
-                                <source src="videos/' . $video_url . '" type="video/webm">
-                                <source src="videos/' . $video_url . '" type="video/avi">
-                                <source src="videos/' . $video_url . '" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>';
-
-                            }
-                            // Close the row
-                        } else {
-                            echo 'No video to output';
-                        }
-
-
-                        // echo $page;
-                    
-
-                    } elseif ($page === 'page2') {
-                        echo '<div class="w-full">
-                        Friends would be shown here if you have any ;)
-                        </div>';
-                    } elseif ($page === 'page3') {
-
-                        // Check if there are any video records
-                    
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $video_url = $row['video_url'];
-
-                                // Output each video in a grid column
-                                echo '
-                                <video width="1000" height="500" controls>
-                                    <source src="videos/' . $video_url . '" type="video/mp4">
-                                    <source src="videos/' . $video_url . '" type="video/webm">
-                                    <source src="videos/' . $video_url . '" type="video/avi">
-                                    <source src="videos/' . $video_url . '" type="video/ogg">
-                                    Your browser does not support the video tag.
-                                </video>';
-
-                            }
-                            // Close the row
-                        } else {
-                            echo 'No video to output';
-                        }
-
-
-                    } elseif ($page === 'page4') {
-                        echo '<div>
-                    <form action="utils/process_upload.php" method="post" enctype="multipart/form-data"
-                        class="flex flex-row items-center">
-                        <input type="file" name="file" id="file">
-                        <button name="submit" type="submit" class="bg-blue-700 hover:bg-blue-500 text-white p-2 w-40 ">Upload</button>
-                    </form>
-
-                    
-                
-                
-    
-                </div>
-                ';
-
-
-
-                        // Check if there are any video records
-                    
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($user_uploaded_results)) {
-                                $video_url = $row['video_url'];
-
-                                // Output each video in a grid column
-                                echo '
-                        <video width="1000" height="500" controls>
-                            <source src="videos/' . $video_url . '" type="video/mp4">
-                            <source src="videos/' . $video_url . '" type="video/webm">
-                            <source src="videos/' . $video_url . '" type="video/avi">
-                            <source src="videos/' . $video_url . '" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>';
-
-                            }
-                            // Close the row
-                        } else {
-                            echo 'No video to output';
-                        }
-
-                    }
+                // You can define content for each page
+                if ($page === 'page1') {
                     ?>
 
-                </div>
+
+
+
+                    <?php require('dashboard-component/movies.php'); ?>
+
+
+
+                    <?php
+                } elseif ($page === 'page2') {
+                    ?>
+
+                    <?php require("dashboard-component/uploaded.php"); ?>
+                <?php } ?>
+
+                <!-- </div> -->
             </div>
 
 
