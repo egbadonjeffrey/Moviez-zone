@@ -1,11 +1,11 @@
 <?php
 
-// Get Videos from DB
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
-$sql = "SELECT * FROM videos_data WHERE username = '$username'";
-$user_uploaded_results = mysqli_query($mysqli, $sql);
-
+include("utils/process_get_data.php");
 
 ?>
 
@@ -22,52 +22,52 @@ $user_uploaded_results = mysqli_query($mysqli, $sql);
 
 
 <!-- // Check if there are any video records -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-4">
+<div class="flex flex-row flex-wrap gap-4">
 
 
     <!-- Movies Page -->
 
-    <section class="my_grid">
+
+    <?php
 
 
-        <?php
-        if (mysqli_num_rows($results) > 0) {
-            while ($row = mysqli_fetch_assoc($results)) {
-                $video_url = $row['video_url'];
-                $video_title = $row['video_name'];
-                $video_id = $row['id']; ?>
 
-                <?php // echo $video_id;
-                
-                        echo ' 
-    <div class="" style="display: flex; min-width: 300px; height: 300px; flex-direction: column; border: 2px; background-color: gray; ">
-        <video style="min-width: 300px; height: 200px;" data-video-id=" ' . $video_id . ' " controls>
-            <source src="videos/' . $video_url . '" type="video/mp4">
-            <source src="videos/' . $video_url . '" type="video/webm">
-            <source src="videos/' . $video_url . '" type="video/avi">
-            <source src="videos/' . $video_url . '" type="video/ogg">
-            Your browser does not support the video tag.
-        </video>
-        <p class="" style="color: black; font-size: 1.5rem; font-weight: 600; padding-top: 1rem; text-align: center;">
-           ' . $video_title . '
-           </p> 
-     </div>
-        ';
-
-
-            }
-            // Close the row
-        } else {
-            echo 'No video to output';
-        }
-
-        ?>
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $video_url = $row['video_url'];
+            $video_title = $row['video_name'];
+            $video_id = $row['id']; ?>
 
 
 
 
+            <div class="flex-shrink-0 lg:w-1/4"
+                style="display: flex; width: 300px; height: 300px; flex-direction: column; border: 2px; background-color: gray; ">
+                <video style="min-width: 300px; height: 200px;" data-video-id=" <?php echo $video_id ?>" controls>
+                    <source src="videos/<?php echo $video_url ?>" type="video/mp4">
+                    <source src="videos/<?php echo $video_url ?>" type="video/webm">
+                    <source src="videos/<?php echo $video_url ?>" type="video/avi">
+                    <source src="videos/<?php echo $video_url ?>" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="" style="color: black; font-size: 1rem; font-weight: 600; padding-top: 1rem; text-align: center;">
+                    <?php echo $video_title ?>
+                </p>
+            </div>
 
-    </section>
+
+        <?php }
+        // Close the row
+    } else {
+        echo 'No video to output';
+    }
+
+    ?>
+
+
+
+
+
 </div>
 
 <script>

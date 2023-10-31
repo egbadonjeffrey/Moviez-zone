@@ -61,7 +61,7 @@ require("./include/header.php");
     <div class="bg-gray-400 flex flex-col justify-between flex-1 p-10">
         <h1 class="text-2xl">Welcome</h1>
 
-        <img src="" class="align-center justify-center" alt="big logo">
+        <h1 class="text-9xl text-orange-300">My Movies zone</h1>
 
         <h4 class="text-lg"> Not a member yet <a href="signup.php" class="underline pl-1 text-black">Register
                 here.</a>

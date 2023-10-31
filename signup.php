@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 include("include/header.php");
 
 
@@ -10,7 +9,7 @@ include("include/header.php");
     <div class="bg-gray-400 flex flex-col justify-between flex-1 p-10">
         <h1 class="text-2xl">Welcome</h1>
 
-        <img src="" class="align-center justify-center" alt="big logo">
+        <h1 class="text-9xl text-orange-300">My Movies zone</h1>
 
         <h4>Already a member <a href="signin.php" class="underline pl-1">Login here.</a> </h4>
     </div>

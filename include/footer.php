@@ -33,11 +33,11 @@
                 </div>
                 <!-- <div class="col-sm-6">
                     <h4 class="text-light mb-4">Popular Links</h4>
-                    <a class="btn btn-link" href="index.php">Home</a>
-                    <a class="btn btn-link" href="about.php">About Us</a>
-                    <a class="btn btn-link" href="movies.php">Movies</a>
-                    <a class="btn btn-link" href="signup.php">Register</a>
-                    <a class="btn btn-link" href="">Support</a>
+                <a class="btn btn-link" href="index.php">Home</a>
+                <a class="btn btn-link" href="about.php">About Us</a>
+                <a class="btn btn-link" href="movies.php">Movies</a>
+                <a class="btn btn-link" href="signup.php">Register</a>
+                <a class="btn btn-link" href="">Support</a>
             </div> -->
                 <div class="col-sm-12">
                     <h4 class="text-light mb-4">Newsletter</h4>
@@ -108,9 +108,20 @@
 
 
 
+<?php
 
-<!-- Tailwindcss Stylesheet -->
-<script src='https://cdn.tailwindcss.com'></script>
+$dashboard1 = '/moviez-zone/dashboard.php?page=page1';
+$dashboard2 = '/moviez-zone/dashboard.php?page=page2';
+$signin = '/moviez-zone/signin.php';
+$signup = '/moviez-zone/signup.php';
+
+if ($currentRoute == $dashboard1 || $currentRoute == $dashboard2 || $currentRoute == $signin || $currentRoute == $signup) {
+    echo "<!-- Tailwindcss Stylesheet -->
+<script src='https://cdn.tailwindcss.com'></script>";
+}
+
+?>
+
 
 
 

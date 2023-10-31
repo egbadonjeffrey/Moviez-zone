@@ -22,7 +22,7 @@ include("./utils/process_get_data.php");
         <div class="flex flex-col gap-5">
             <h1 class="text-3xl">User Dashboard Page</h1>
             <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
-                <li> <a href="movies.php">Movies</a> </li>
+                <li> <a href="dashboard.php?page=page1">Movies</a> </li>
                 <li> <a href="dashboard.php?page=page2">Uploaded</a> </li>
             </ul>
         </div>
@@ -46,7 +46,7 @@ include("./utils/process_get_data.php");
                                 <?php echo htmlspecialchars($user["username"]) ?? "Ben" ?>
                             </span>
                             <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                                <a href="#" class="dropdown-item">Settings</a>
+                                <a href="settings.php" class="dropdown-item">Settings</a>
                                 <a href="./utils/process_logout.php" class="dropdown-item">Log-out</a>
                             </div>
                         </div>
@@ -74,12 +74,7 @@ include("./utils/process_get_data.php");
                 if ($page === 'page1') {
                     ?>
 
-
-
-
-                    <? header("Location: /moviez-zone/movies.php") ?>
-
-
+                    <?php include('dashboard-component/movies.php'); ?>
 
                     <?php
                 } elseif ($page === 'page2') {
