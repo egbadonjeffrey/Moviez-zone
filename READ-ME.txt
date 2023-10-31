@@ -7,3 +7,17 @@
   =>  Template Author  : HTML Codex
 
   =>  Author Website   : https://htmlcodex.com
+
+
+
+*****Work on dashboard - movies and upload components [convert to in page components]
+*****Work on nav- add new nav to header for uniformity - implement the logout and link to settings page.
+*****Work on settings page- implement settings page and organize CRUD function for the users.
+*****Work on global authentication with $_SESSION variable.
+*****Work on about page add more details about developer, use case and what you learnt with the project.
+*****Move on to build in NextJS.
+
+Optional
+
+**Make movies page more visually appealing.
+***Add animations to pages that have no animation.
