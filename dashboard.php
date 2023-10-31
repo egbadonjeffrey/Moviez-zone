@@ -22,7 +22,7 @@ include("./utils/process_get_data.php");
         <div class="flex flex-col gap-5">
             <h1 class="text-3xl">User Dashboard Page</h1>
             <ul id="menu" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-3 text-[#1E1916] text-md py-4 ">
-                <li> <a href="dashboard.php?page=page1">Movies</a> </li>
+                <li> <a href="movies.php">Movies</a> </li>
                 <li> <a href="dashboard.php?page=page2">Uploaded</a> </li>
             </ul>
         </div>
@@ -77,7 +77,7 @@ include("./utils/process_get_data.php");
 
 
 
-                    <?php require('dashboard-component/movies.php'); ?>
+                    <? header("Location: /moviez-zone/movies.php") ?>
 
 
 
@@ -85,7 +85,7 @@ include("./utils/process_get_data.php");
                 } elseif ($page === 'page2') {
                     ?>
 
-                    <?php require("dashboard-component/uploaded.php"); ?>
+                    <?php include("dashboard-component/uploaded.php"); ?>
                 <?php } ?>
 
                 <!-- </div> -->
@@ -105,5 +105,5 @@ include("./utils/process_get_data.php");
 require("./include/footer.php");
 
 
-mysqli_close($mysqli);
+// mysqli_close($mysqli);
 ?>

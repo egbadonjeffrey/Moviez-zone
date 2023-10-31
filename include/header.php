@@ -33,28 +33,70 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Video css -->
-    <link href="css/custom_video.css" rel="stylesheet">
+
+
 
     <?php
     $currentRoute = $_SERVER['REQUEST_URI'];
 
     $about = '/moviez-zone/about.php';
     $contact = '/moviez-zone/contact.php';
+    $movies = '/moviez-zone/movies.php';
 
     // echo $currentRoute;
     // Check if the current route is one of the specified pages
     if (
         $currentRoute == $about ||
         $currentRoute == $contact ||
+        $currentRoute == $movies ||
         $currentRoute == '/moviez-zone/' ||
         $currentRoute == '/moviez-zone/index.php'
     ) {
         echo "";
     } else {
-        echo '<!-- Tailwindcss -->
-    <script src="https://cdn.tailwindcss.com"></script>';
+        echo '';
     }
+    ?>
+
+
+    <?php
+
+    if ($currentRoute == $movies) {
+
+        echo '
+    <style>
+    .my-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+    //   @media (min-width: 640px) {
+    //     .my-grid {
+    //       grid-template-columns: repeat(2, 1fr);
+    //     }
+    //   }
+      
+      @media (max-width: 768px) {
+        .my-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      
+      @media (max-width: 1400px) {
+        .my-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      
+      .my-grid-gap {
+        gap: 1rem;
+      }
+      </style>
+      ';
+    } else {
+        echo '';
+    }
+
     ?>
 
 
@@ -95,7 +137,7 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn"
         data-wow-delay="0.1s">
         <a href="index.php" class="navbar-brand d-block d-lg-none">
-            <h1 class="text-primary">Moviezone</h1>
+            <h1 class="text-primary">Mymoviezone</h1>
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -104,9 +146,10 @@
             <div class="navbar-nav ms-auto py-0">
                 <a href="index.php" class="nav-item nav-link active">Home</a>
                 <a href="about.php" class="nav-item nav-link">About</a>
+                <a href="movies.php" class="nav-item nav-link">Movies</a>
             </div>
             <a href="index.html" class="navbar-brand bg-primary py-2 px-4 mx-3 d-none d-lg-block">
-                <h1 class="text-white">Moviezone</h1>
+                <h1 class="text-white">Mymoviezone</h1>
             </a>
             <div class="navbar-nav me-auto py-0">
                 <a href="signin.php" class="nav-item nav-link">Login</a>
@@ -120,3 +163,6 @@
 
     <!-- Navbar End -->';
     }
+
+
+    ?>

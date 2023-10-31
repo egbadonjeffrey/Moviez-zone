@@ -1,6 +1,5 @@
 <?php
 
-include("connection_db/dbconfig.php");
 
 
 // Start session
@@ -33,15 +32,9 @@ if (isset($_SESSION["user_id"])) {
 
 
 
-// Get Videos from DB
 
 
-$sql = "SELECT * FROM videos_data WHERE username = '$username'";
-$user_uploaded_results = mysqli_query($mysqli, $sql);
 
-
-$sql = "SELECT * FROM videos_data ORDER BY id DESC";
-$result = mysqli_query($mysqli, $sql);
 
 
 ?>

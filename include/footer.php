@@ -4,7 +4,7 @@
     <div class="row g-5 py-5">
         <div class="col-lg-6 pe-lg-5">
             <a href="index.html" class="navbar-brand">
-                <h1 class="display-5 text-primary">Moviezone</h1>
+                <h1 class="display-5 text-primary">Mymoviezone</h1>
             </a>
             <p>Share the magic of movies with friends, from anywhere, and with everyone..</p>
             <p><i class="fa fa-map-marker-alt me-2"></i>Nigeria</p>
@@ -31,14 +31,14 @@
                     <a class="btn btn-link" href="signup.php">Register</a>
                     <!-- <a class="btn btn-link" href="">Support</a> -->
                 </div>
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <h4 class="text-light mb-4">Popular Links</h4>
                     <a class="btn btn-link" href="index.php">Home</a>
                     <a class="btn btn-link" href="about.php">About Us</a>
                     <a class="btn btn-link" href="movies.php">Movies</a>
                     <a class="btn btn-link" href="signup.php">Register</a>
-                    <!-- <a class="btn btn-link" href="">Support</a> -->
-                </div>
+                    <a class="btn btn-link" href="">Support</a>
+            </div> -->
                 <div class="col-sm-12">
                     <h4 class="text-light mb-4">Newsletter</h4>
                     <div class="w-100">
@@ -59,7 +59,7 @@
 <div class="container-fluid bg-dark text-white border-top border-secondary px-0">
     <div class="d-flex flex-column flex-md-row justify-content-between">
         <div class="py-4 px-5 text-center text-md-start">
-            <p class="mb-0">&copy; <a class="text-primary" href="#">Your Site Name</a>. All Rights Reserved.</p>
+            <p class="mb-0">&copy; <a class="text-primary" href="#">mymoviezone</a>. All Rights Reserved.</p>
         </div>
         <div class="py-4 px-5 bg-secondary footer-shape position-relative text-center text-md-end">
             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -76,6 +76,25 @@
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+<!-- dropdown script for nav -->
+<script>
+    const dropdown = document.getElementById('dropdown');
+
+    console.log(dropdown);
+
+    dropdown.addEventListener('mouseenter', () => {
+        const dropdownContent = dropdown.querySelector('.hidden');
+        dropdownContent.classList.remove('hidden');
+        dropdownContent.classList.add('block');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        const dropdownContent = dropdown.querySelector('.block');
+        dropdownContent.classList.remove('block');
+        dropdownContent.classList.add('hidden');
+    });
+</script>
+
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -86,6 +105,15 @@
 <script src="lib/counterup/counterup.min.js"></script>
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+
+<!-- Tailwindcss Stylesheet -->
+<script src='https://cdn.tailwindcss.com'></script>
+
+
+
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
